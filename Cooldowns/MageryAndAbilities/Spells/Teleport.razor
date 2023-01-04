@@ -8,16 +8,19 @@ endif
 cast 'Teleport'
 @setvar! cursorWait teleport
 while not targetexists and not insysmsg 'Your concentration is disturbed, thus ruining thy spell'
-    pause 25
+    pause 50
     if insysmsg 'Your concentration is disturbed, thus ruining thy spell'
-        overhead 'Disturbed'
+        overhead '■■ DISTURBED ■■' 33
+        sysmsg '■■ DISTURBED ■■' 33
         @setvar! cursorWait NOT_WAITING
         break
     endif
 endwhile
-while targetexists   
+while targetexists
+    
 endwhile
 if cursorWait == teleport and not insysmsg 'Your concentration is disturbed, thus ruining thy spell'
     cooldown "Teleport" 15
     @setvar! cursorWait NOT_WAITING
 endif
+ 
