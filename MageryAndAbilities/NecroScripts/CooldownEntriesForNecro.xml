@@ -1,3 +1,3 @@
-<cooldownentry name="Poison strike" defaultcooldown="0" cooldownbartype="Regular" hue="33" pauseduringworldsaves="True" />
-<cooldownentry name="Pain spike" defaultcooldown="0" cooldownbartype="Regular" hue="33" pauseduringworldsaves="True" />
-<cooldownentry name="Mindrot" defaultcooldown="0" cooldownbartype="Regular" hue="33" pauseduringworldsaves="True" />
+<cooldownentry name="Poison strike" defaultcooldown="0" cooldownbartype="Regular" hue="73" pauseduringworldsaves="True" />
+<cooldownentry name="Pain spike" defaultcooldown="0" cooldownbartype="Regular" hue="73" pauseduringworldsaves="True" />
+<cooldownentry name="Mindrot" defaultcooldown="0" cooldownbartype="Regular" hue="73" pauseduringworldsaves="True" />
