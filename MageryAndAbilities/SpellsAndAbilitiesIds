@@ -1,13 +1,13 @@
 ■■■■■■■ NECRO abilities ■■■■■■■
 Pain spike 1
 Poison strike 2
-Mindrot 3
-Corpse skin 4
-Evil omen 5
-Strangle 6
-Wither 7
 
-
+■■■■■■■ Does not need an id, as it does not result in a target cursor ■■■■■■■
+Mindrot
+Corpse skin
+Evil omen
+Strangle
+Wither
 
 
 
