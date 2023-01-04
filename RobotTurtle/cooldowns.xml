@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<cooldowns>
+	<cooldownentry name="casting" defaultcooldown="0" cooldownbartype="Regular" hue="456" pauseduringworldsaves="False" />
+	<cooldownentry name="meditation" defaultcooldown="0" cooldownbartype="Regular" hue="456" pauseduringworldsaves="False" />
+	<cooldownentry name="mushroom" defaultcooldown="60" cooldownbartype="Regular" hue="253" pauseduringworldsaves="True">
+		<trigger triggertype="SysMessage" duration="60" triggertext="You consume a magic mushroom" />
+		<trigger triggertype="SysMessage" duration="0" triggertext="You may now use another magic mushroom" />
+	</cooldownentry>
+	<cooldownentry name="heal potion" defaultcooldown="10" cooldownbartype="Regular" hue="253" pauseduringworldsaves="False" />
+	<cooldownentry name="strength potion" defaultcooldown="120" cooldownbartype="Regular" hue="88" pauseduringworldsaves="False" />
+	<cooldownentry name="mana drain" defaultcooldown="60" cooldownbartype="Regular" hue="15" pauseduringworldsaves="False" />
+	<cooldownentry name="curse" defaultcooldown="60" cooldownbartype="Regular" hue="15" pauseduringworldsaves="False" />
+	<cooldownentry name="magic arrow" defaultcooldown="20" cooldownbartype="Regular" hue="144" pauseduringworldsaves="True">
+		<trigger triggertype="SysMessage" duration="0" triggertext="You may now cast a wizardry magic arrow" />
+	</cooldownentry>
+	<cooldownentry name="harm" defaultcooldown="20" cooldownbartype="Regular" hue="144" pauseduringworldsaves="True">
+		<trigger triggertype="SysMessage" duration="" triggertext="You may now cast a wizardy harm" />
+	</cooldownentry>
+	<cooldownentry name="fireball" defaultcooldown="20" cooldownbartype="Regular" hue="144" pauseduringworldsaves="True">
+		<trigger triggertype="SysMessage" duration="0" triggertext="You may now cast a wizardry fireball" />
+	</cooldownentry>
+	<cooldownentry name="lightning" defaultcooldown="20" cooldownbartype="Regular" hue="144" pauseduringworldsaves="True">
+		<trigger triggertype="SysMessage" duration="0" triggertext="You may now cast a wizardry ligthning" />
+	</cooldownentry>
+	<cooldownentry name="Bless" defaultcooldown="120" cooldownbartype="Regular" hue="88" pauseduringworldsaves="True" />
+	<cooldownentry name="Hamstring" defaultcooldown="0" cooldownbartype="Regular" hue="38" pauseduringworldsaves="True">
+		<trigger triggertype="SysMessage" duration="30" triggertext="hamstrings your target" />
+		<trigger triggertype="SysMessage" duration="15" triggertext="fail to hamstring" />
+	</cooldownentry>
+	<cooldownentry name="Hamstrung" defaultcooldown="0" cooldownbartype="Regular" hue="38" pauseduringworldsaves="True">
+		<trigger triggertype="SysMessage" duration="3" triggertext="You have been hamstrung" />
+	</cooldownentry>
+	<cooldownentry name="Teleport" defaultcooldown="15" cooldownbartype="Regular" hue="38" pauseduringworldsaves="True" />
+	<cooldownentry name="Poison strike" defaultcooldown="15" cooldownbartype="Regular" hue="73" pauseduringworldsaves="True" />
+	<cooldownentry name="Pain spike" defaultcooldown="0" cooldownbartype="Regular" hue="73" pauseduringworldsaves="True" />
+</cooldowns>
