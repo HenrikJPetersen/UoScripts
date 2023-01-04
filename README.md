@@ -6,19 +6,11 @@ I've decided to create this repository to manage all the scripts i've made over 
 
 ############# TRAINING #############
 
-All script has been tested and has proven to work, while I've used them for my skills.
-If you experience any problems with theese scripts - you're welcome to contact me on discord - as I'm 
-controlling who can see this collection and who cannot - you should know who I am :)
-
 
 
 ############# UTILITY #############
 
 This is a collection of scripts to make UO life easier.
-
-
-
-
 
 
 ############# COOLDOWNS #############
