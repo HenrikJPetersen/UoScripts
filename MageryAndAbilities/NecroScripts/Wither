@@ -4,4 +4,4 @@ if not cooldown "Wither"
 else 
     overhead '■■ Wither on CD ■■' 33
 endif
-clearsysmsg
+
