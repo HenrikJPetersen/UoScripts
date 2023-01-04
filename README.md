@@ -22,3 +22,12 @@ For cooldowns, there will be 2 files in most cases - a razor script and a xml en
 cooldowns.xml file located under your profile.
 So make sure that you have both the xml and .razor macro for the cooldown you desire.
 
+HUES:
+253: for consumeables, like food, potions, shrooms
+144 for lightning
+88 for buffs
+38 for pvp
+38 teleport
+73 necro abilities
+
+
