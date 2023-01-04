@@ -1,30 +1,24 @@
-clearsysmsg
-if not varexist waitingForCursor
-    @setvar! waitingForCursor NOT_WAITING
+clearsysmsg 
+if not varexist cursorWait
+    @setvar! cursorWait NOT_WAITING
 endif
 if not varexist teleport
-    @setvar! teleport 10
-endif
-if not varexist teleport_ct
-    @setvar! teleport_ct 1000
+    @setvar! teleport 1
 endif
 cast 'Teleport'
-@setvar waitingForCursor teleport
+@setvar! cursorWait teleport
 while not targetexists and not insysmsg 'Your concentration is disturbed, thus ruining thy spell'
-    pause 50
+    pause 25
     if insysmsg 'Your concentration is disturbed, thus ruining thy spell'
         overhead 'Disturbed'
-        @setvar waitingForCursor NOT_WAITING
+        @setvar! cursorWait NOT_WAITING
         break
     endif
 endwhile
 while targetexists
     
-    pause 50
 endwhile
-if waitingForCursor == teleport and not insysmsg 'Your concentration is disturbed, thus ruining thy spell'
-    overhead 'WIN'
-    cooldown "Teleport"
-    @setvar waitingForCursor NOT_WAITING
+if cursorWait == teleport and not insysmsg 'Your concentration is disturbed, thus ruining thy spell'
+    cooldown "Teleport" 15
+    @setvar! cursorWait NOT_WAITING
 endif
-clearsysmsg
