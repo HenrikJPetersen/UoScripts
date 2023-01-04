@@ -24,10 +24,9 @@ So make sure that you have both the xml and .razor macro for the cooldown you de
 
 HUES:
 253: for consumeables, like food, potions, shrooms
-144 for lightning
+144 wiz grim cooldowns
 88 for buffs
-38 for pvp
-38 teleport
+38 for pvp, such as hamstrung, teleport
 73 necro abilities
 
 
