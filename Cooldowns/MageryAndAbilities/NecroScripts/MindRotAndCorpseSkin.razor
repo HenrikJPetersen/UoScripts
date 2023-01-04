@@ -1,0 +1,14 @@
+## TODO: Written at work, need to test the pause - if pause 50 is enough between using the abilities.
+if not cooldown "Mindrot"
+	say '[MindRot'
+	cooldown "Mindrot" 29500
+else 
+    	overhead '■■ Mindrot on CD ■■' 33
+endif
+pause 50
+if not cooldown "Corpse skin"
+	say '[CorpseSkin'
+	cooldown "Corpse skin" 29500
+else
+	overhead '■■ Corpse skin on CD ■■' 33
+endif

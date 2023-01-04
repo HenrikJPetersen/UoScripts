@@ -1,0 +1,8 @@
+<cooldownentry name="Poison strike" defaultcooldown="0" cooldownbartype="Regular" hue="73" pauseduringworldsaves="True" />
+<cooldownentry name="Pain spike" defaultcooldown="0" cooldownbartype="Regular" hue="73" pauseduringworldsaves="True" />
+<cooldownentry name="Mindrot" defaultcooldown="0" cooldownbartype="Regular" hue="73" pauseduringworldsaves="True" />
+<cooldownentry name="Corpse skin" defaultcooldown="0" cooldownbartype="Regular" hue="73" pauseduringworldsaves="True" />
+<cooldownentry name="Evil omen" defaultcooldown="0" cooldownbartype="Regular" hue="73" pauseduringworldsaves="True" />
+<cooldownentry name="Wither" defaultcooldown="0" cooldownbartype="Regular" hue="73" pauseduringworldsaves="True" />
+<cooldownentry name="Strangle" defaultcooldown="0" cooldownbartype="Regular" hue="73" pauseduringworldsaves="True" />
+

@@ -1,0 +1,7 @@
+if not cooldown "Wither"
+	say '[Wither'
+	cooldown "Wither" 29500
+else 
+    overhead '■■ Wither on CD ■■' 33
+endif
+

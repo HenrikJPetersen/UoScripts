@@ -1,0 +1,23 @@
+clearsysmsg 
+if not varexist waitingForCursor
+    @setvar! waitingForCursor NOT_WAITING
+endif
+if not varexist painspike
+    @setvar! painspike 1
+endif
+if not cooldown "Pain spike"
+    @setvar! waitingForCursor painspike
+    say '[painspike'
+    while not targetexists 
+    endwhile
+    while targetexists 
+    endwhile
+    pause 100
+    if waitingForCursor == painspike and insysmsg 'Unholy symbols remaining'
+        cooldown "Pain spike" 29500
+        @setvar! waitingForCursor NOT_WAITING
+    endif
+else 
+    overhead '■■ Pain spike on CD ■■' 33
+endif
+clearsysmsg
