@@ -3,29 +3,23 @@ Razor scripts for Ultima online on outlands
 
 
 I've decided to create this repository to manage all the scripts i've made over time.
-###########################################################################################################
-############# TRAINING ############## TRAINING ############## TRAINING ############## TRAINING ############
-###########################################################################################################
 
+############# TRAINING #############
 All script has been tested and has proven to work, while I've used them for my skills.
 If you experience any problems with theese scripts - you're welcome to contact me on discord - as I'm 
 controlling who can see this collection and who cannot - you should know who I am :)
 
 
-###########################################################################################################
-############# UTILITY ############## UTILITY ############## UTILITY ############## UTILITY ##########
-###########################################################################################################
 
+############# UTILITY #############
 This is a collection of scripts to make UO life easier.
 
 
 
 
 
-###########################################################################################################
-#### COOLDOWNS ############## COOLDOWNS ############## COOLDOWNS ############## COOLDOWNS #####
-###########################################################################################################
 
+############# COOLDOWNS #############
 Alot of the handling for cooldowns was inspired by this following link:
 https://gist.github.com/tstenhaug/7b8a8205da3d11d3a41ecabc354db746#file-wizardry-nuke-with-cooldowns-razor-L232
 
