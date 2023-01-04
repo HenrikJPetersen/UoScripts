@@ -1,3 +1,0 @@
-## 1. Create a cooldown timer for when mindrot is applied to a target for easy visual.
-## 2. Create reset of above visual timer when casting poison again after poison strike in poisonstrike.razor file
-## 3. Test timings in the mindrot/corpseskin script.
