@@ -23,7 +23,7 @@ This is a collection of scripts to make UO life easier.
 
 
 ###########################################################################################################
-########## COOLDOWNS ############## COOLDOWNS ############## COOLDOWNS ############## COOLDOWNS ###########
+#### COOLDOWNS ############## COOLDOWNS ############## COOLDOWNS ############## COOLDOWNS #####
 ###########################################################################################################
 
 Alot of the handling for cooldowns was inspired by this following link:
