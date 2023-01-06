@@ -1,0 +1,28 @@
+## Should be cleaned up, instead of just adding more mess all the time.
+if followers > 1 and findtype "an earth elemental" ground 0 0 6 as pet and findtype "a lich" ground 0 0 6 as lich
+    say 'All follow me '
+    pause 25
+    overhead 'TANK GUARD ME' 33
+    if noto 'pet' = "friend"
+        @menu 'pet' 3
+    endif
+elseif followers = 2 and findtype "an earth elemental" ground 0 0 6 as pet
+    say 'All guard me'
+    ## For beastiary. Should create a list of the lowest possible creatures to tame, for the beastiary that it checks, instead of just a string.
+elseif followers > 2 and findtype "an earth elemental" ground 0 0 6 as pet and findtype "a brown bear" ground 0 0 6 as lich 
+    say 'All follow me'
+    pause 25
+    overhead 'TANK GUARD ME' 78
+    if noto 'pet' = "friend"
+        @menu 'pet' 3
+    endif
+elseif followers  = 5 and findtype "an earth elemental" ground 0 0 6 as pet
+    say 'All guard me'
+    ## Lazy method
+elseif followers > 3
+    overhead 'RESUMMON' 33
+    say 'All guard me'
+else
+    overhead 'YOU HAVE NO TANK'
+    say 'All follow me'
+endif
