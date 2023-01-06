@@ -1,0 +1,15 @@
+if findlayer 'self' 'righthand' as 'LH'
+    getlabel 'LH' 'label'
+    if 'spellbook' in 'label'
+        overhead '■■ Equipping mace ■■'
+        dress 'club'
+        break       
+    endif
+endif
+if findlayer 'self' 'righthand' as 'LH'
+    getlabel 'LH' 'label'
+    if 'maul' in 'label' or 'club' in 'label'
+        overhead '■■ Equipping spellbook ■■'
+        dress 'spellbook'
+    endif
+endif    
