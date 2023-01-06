@@ -1,0 +1,11 @@
+dress 'club'
+overhead '■ POISON STRIKE ■' 55
+say '[poisonstrike'
+while not targetexists 
+endwhile
+while targetexists     
+endwhile
+if insysmsg 'Unholy symbols remaining'
+cooldown "Poison strike" 29000
+endif
+dress 'spellbook'
