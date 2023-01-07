@@ -1,10 +1,10 @@
 if mana < 50
     if findtype '29012' backpack
-    dclicktype '29012'
-else
-    overhead 'No SHROMS left' 33
-endif
-    
+        dclicktype '29012'
+    else
+        overhead 'No SHROMS left' 33
+    endif
+endif    
 if findtype 'a ghoul' ground 0 0 2 as pet
     break
 endif
@@ -31,5 +31,8 @@ elseif findtype 'a rotting flesh' ground 0 0 2 as pet
 endif
 say '[vengefulspirit'
 cast 'Summ. Creature'
-pause 6500
+## If you have spirit pact in summoners tome
+pause 2550
+## If you do not have it..
+## pause 6100
 replay
