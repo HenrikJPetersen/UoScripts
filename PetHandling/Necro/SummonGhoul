@@ -1,0 +1,29 @@
+if findtype 'a ghoul' ground 0 0 2 as pet
+    break
+endif
+
+if findtype 'a skeleton' ground 0 0 2 as pet
+    if noto 'pet' = "friend"
+    @menu 'pet' 9
+    endif    
+elseif findtype 'a skeleton knight' ground 0 0 2 as pet
+    if noto 'pet' = "friend"
+    @menu 'pet' 9
+    endif    
+    elseif findtype 'a zombie' ground 0 0 2 as pet
+    if noto 'pet' = "friend"
+    @menu 'pet' 9
+    endif    
+    elseif findtype 'a skeleton knight' ground 0 0 2 as pet
+    if noto 'pet' = "friend"
+    @menu 'pet' 9
+    endif    
+    elseif findtype 'a rotting flesh' ground 0 0 2 as pet
+    if noto 'pet' = "friend"
+    @menu 'pet' 9
+    endif
+endif
+say '[vengefulspirit'
+cast 'Summ. Creature'
+pause 6500
+replay
