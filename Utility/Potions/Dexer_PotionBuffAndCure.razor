@@ -1,0 +1,74 @@
+if not varexist 'strpotion_cd'
+    @setvar 'strpotion_cd' 120000
+endif
+if not varexist 'agipotion_cd'
+    @setvar 'agipotion_cd' 120000
+endif
+if not varexist 'mrpotion_cd'
+    @setvar 'mrpotion_cd' 120000
+endif
+clearsysmsg     
+## Handling strenght potion...
+if cooldown "strenght potion" >= strpotion_cd or not findbuff 'Strength'
+    if findtype "white potion" backpack as spotion
+        overhead '■■ EAT: STR potion ■■' 335
+        dclick spotion
+        pause 50
+        if  insysmsg 'You must wait'
+            overhead 'WAIT DUMMY' 33
+        endif
+        
+        cooldown "strength potion" strpotion_cd
+    else
+        overhead 'No strenght potion left' 33
+    endif
+else
+    overhead '■■ Str potion active ■■' 335
+endif
+pause 100
+## Handling agility potion..
+clearsysmsg
+if cooldown "agility potion" >= agipotion_cd or not findbuff 'Agility'
+    if findtype "blue potion" backpack as apotion
+        overhead '■■ EAT: AGI potion ■■' 335
+        dclick apotion
+        pause 50
+        if  insysmsg 'You must wait'
+            overhead 'WAIT DUMMY' 33
+        endif
+        cooldown "agility potion" agipotion_cd
+    else
+        overhead 'No agility potion left' 33
+    endif
+else
+    overhead '■■ Agility potion active ■■' 331
+endif
+## Handling MR potion
+pause 100
+clearsysmsg
+if cooldown "mresist potion" >= mrpotion_cd or not findbuff 'Magic Resist Potion'
+    if findtype "black potion" backpack as mrpotion
+        overhead '■■ EAT: MR potion ■■' 335
+        dclick mrpotion
+        cooldown "mresist potion" mrpotion_cd
+    else
+        overhead 'No MResist potion left' 33
+    endif
+else
+    overhead '■■ MRrest potion active ■■' 331
+endif
+## Handling cure if poisoned.
+pause 100
+if poisoned
+    overhead 'Attempting to cure' 33
+    while poisoned
+        if findtype 'orange potion' backpack as cpotion
+            dclick cpotion
+            pause 650
+        else
+            overhead 'Im broke and out of cure potions' 23
+            break
+        endif
+    endwhile
+else    
+endif
