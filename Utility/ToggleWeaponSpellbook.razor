@@ -1,4 +1,5 @@
 ## This script is used to toggle between your spellbook and a training clyb to level up mace codex as a necro
+## This is the setup im using.
 ## Magery               100.0 100.0 0.0 100.0
 ## Poisoning            100.0 100.0 0.0 120.0
 ## Taste Identification 100.0 100.0 0.0 120.0
@@ -7,7 +8,6 @@
 ## Spirit Speak          80.0  80.0 0.0 100.0
 ## Mace Fighting         80.0  80.0 0.0 100.0
 ## Meditation            80.0  80.0 0.0 100.0
-## This is the setup im using.
 ##
 if not varexist spellbook
     setvar spellbook
@@ -22,7 +22,7 @@ endif
 if findlayer 'self' 'righthand' as 'LH'
     getlabel 'LH' 'label'
     if 'eminently' in 'label'
-        overhead '■■ Equipping mace ■■'
+        overhead '■■ ON: mace ■■' 88
         dclick trainingclub
         break       
     endif
@@ -30,7 +30,7 @@ endif
 if findlayer 'self' 'righthand' as 'LH'
     getlabel 'LH' 'label'
     if 'training' in 'label' or 'club' in 'label'
-        overhead '■■ Equipping spellbook ■■'
+        overhead '■■ ON: Spellbook ■■' 88
         dclick spellbook
     endif
 endif  
