@@ -1,0 +1,25 @@
+if not varexist spellbook
+    setvar spellbook
+endif
+if not varexist trainingclub
+    setvar trainingclub
+endif
+if rhandempty
+    dclick spellbook
+    break
+endif
+if findlayer 'self' 'righthand' as 'LH'
+    getlabel 'LH' 'label'
+    if 'eminently' in 'label'
+        overhead '■■ ON: mace ■■' 88
+        dclick trainingclub
+        break       
+    endif
+endif
+if findlayer 'self' 'righthand' as 'LH'
+    getlabel 'LH' 'label'
+    if 'training' in 'label' or 'club' in 'label'
+        overhead '■■ ON: Spellbook ■■' 88
+        dclick spellbook
+    endif
+endif  
