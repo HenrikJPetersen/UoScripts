@@ -1,0 +1,19 @@
+clearsysmsg
+dclick trainingclub
+overhead '■■ PAIN STRIKE ■■' 55
+say '[painspike'
+while not targetexists 
+endwhile
+while targetexists     
+endwhile
+dclick spellbook
+if insysmsg 'Unholy symbols remaining'
+    cooldown "Pain spike" 29000
+endif
+
+if insysmsg 'you must wait'
+    overhead '■■ PainSpike ■■' 33
+else
+    
+endif
+ 
