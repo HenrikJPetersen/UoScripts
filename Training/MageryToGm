@@ -1,0 +1,76 @@
+if skill 'magery' != 100
+	if skill 'magery' < 60
+		##Cast lightning
+		if hp > 30
+			if mana > 30
+				cast 'lightning'
+				while not targetexists
+				endwhile
+				while targetexists
+					##If a mongbat is close target that instead of yourself - less downtime!
+					if findtype '39' any any any 3
+						targettype '39' any any any 3
+					else
+						hotkey 'Target self'
+					endif
+				endwhile
+				pause 500
+			else 
+				##Meditation to get mana
+				while mana < 30
+					if not findbuff 'actively meditating'
+						skill 'meditation'
+					else
+						pause 1000
+					endif
+				endwhile
+			endif
+		endif	
+	elseif skill 'magery' < 75
+		##Cast invis
+		if mana > 30
+			cast 'invisibility'
+			while not targetexists
+			endwhile
+			while targetexists
+				hotkey 'Target self'
+			endwhile
+			pause 500
+		else
+			while mana < 50
+				if findbuff 'Actively meditating'
+					pause 1000
+				else
+					skill 'Meditation'
+				endif
+			endwhile
+		endif
+		
+	elseif skill 'magery' < 80
+		##Cast meteor swarm
+		if mana > 50
+			cast 'meteor swarm'
+			while not targetexists
+			endwhile
+			while targetexists
+				hotkey 'Target self'
+			endwhile
+			pause 500
+		else
+			while mana < 60
+				if findbuff 'Actively meditating'
+					pause 1000
+				else
+					skill 'Meditation'
+				endif
+			endwhile
+		endif	
+	elseif skill 'magery' < 85 
+		##Remember to setup your restock from shelf!
+		##Cast flamestrike
+	elseif skill 'magery' < 100
+		##Remember to setup your restock from shelf!
+		##Cast summon earth elemental
+	endif
+endif
+replay
