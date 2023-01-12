@@ -1,0 +1,46 @@
+if counttype '3973' < 5 or counttype '3972' < 5
+    overhead 'restocking'
+    @menu shelf 1
+endif
+if mana > 15
+    if cooldown wither == 0
+        say '[Wither'
+        cooldown wither 60000
+    endif   
+    ##Cast cure to gain eval int.
+    cast 'cure'
+    while not targetexists 
+    endwhile
+    while targetexists 
+        hotkey 'Last target'
+    endwhile
+    pause 800
+else
+    while mana < 80
+        ##Eat mushroom if present.
+        if findtype '29012' backpack as shroom and cooldown mushroom == 0
+            dclick shroom
+        else
+            if counttype '3974' < 5 or counttype '3973' < 5 or counttype '3972' < 5
+                ## Restocking to cast create food.
+                @menu shelf 1
+            endif
+            if cooldown mushroom == 0
+                ##Create mushrooms.
+                cast 'create food'
+                while not findtype '29012' backpack
+                endwhile
+                if findtype '29012' backpack as shrooms
+                    dclick shrooms
+                endif
+            endif
+            if not findbuff 'Actively meditating'
+                ##Chill to get mana.
+                skill 'Meditation'
+            else
+                pause 1000
+            endif
+        endif
+    endwhile
+endif
+replay
