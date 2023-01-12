@@ -108,7 +108,7 @@ if skill 'magery' != 100
 		endif
 		if mana > 50
 			cast 'Water elemental'
-			while not findtype "a water elemental" true
+			while not findtype "a water elemental" ground 0 0 2
 				pause 250
 			endwhile
 			if findtype "a water elemental" as ele
