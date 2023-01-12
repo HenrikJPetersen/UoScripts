@@ -1,0 +1,49 @@
+## Restock for mandrake root
+if counttype '3974' < 5
+    @menu shelf 1
+endif
+if counttype '3981' < 5
+    @menu shelf 1
+endif
+if skill 'evalint' != 100
+    if mana > 50
+        if findtype "a water elemental" as elem
+            cast 'dispel'
+            while not targetexists
+            endwhile
+            target elem
+            pause 750
+        endif
+        cast 'Water elemental'
+        overhead 'waiting for elemental'
+        while not findtype "a water elemental" true
+            pause 250
+        endwhile
+        pause 500
+        if findtype "a water elemental" as ele
+            overhead 'Attempting to dispel'
+            if mana > 20
+                cast 'dispel'
+                while not targetexists
+                endwhile
+                target ele
+            endif
+        endif
+        pause 500
+    else
+        while mana < 50
+        if findtype '29012' as 'shroom' and cooldown mushroom = 0
+            dclick 'shroom'
+        elseif counttype '29012' = 0
+            cast 'create food'
+        endif
+        if findbuff 'Actively meditating'
+            wait 500
+        else
+            skill 'meditation'
+            pause 2500
+        endif
+        endwhile
+    endif
+endif
+replay
