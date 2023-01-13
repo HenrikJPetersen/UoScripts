@@ -1,0 +1,25 @@
+## Requires a cooldown in game options named "poisonstrike"
+
+clearsysmsg 
+say '[poisonstrike'
+pause 250
+if insysmsg 'You must wait another'
+    overhead 'COOLDOWN POISON STRIKE'
+    break
+endif
+while not targetexists 
+endwhile
+while targetexists 
+    hotkey 'Last target'
+    if insysmsg 'The requested target is out'
+        pause 250
+    endif
+    if not targetexists 
+        break
+    endif
+endwhile
+pause 250
+if insysmsg 'unholy symbols remaining'
+    cooldown poisonstrike 24750
+endif
+
