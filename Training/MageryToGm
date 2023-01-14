@@ -1,7 +1,7 @@
 ## Set your shelf variable for when you're no longer in noob dungeon.
 if skill 'magery' >= 80
 	if not varexists shelf
-		@set var shelf
+		@setvar shelf
 	endif
 endif
 ## Main script
