@@ -1,0 +1,113 @@
+## This require tomes for the special items.
+## A magic recycler
+## A stockpile
+## A Bank vault
+
+
+
+## skill scrolls
+if not varexist sstome
+    overhead 'Please set your skill scroll tome'
+    @setvar sstome
+endif
+## Asppect items
+if not varexist aspecttome
+    overhead 'Please set your aspect tome'
+    @setvar aspecttome
+endif
+## Cloth
+if not varexist clothtome
+    overhead 'Please set your cloth tome'
+    @setvar clothtome
+endif
+## Dyes
+if not varexist dyetome
+    overhead 'Please set your dye tome'
+    @setvar dyetome
+endif
+## Tmaps
+if not varexist tmaptome
+    overhead 'Please set your Tmap tome'
+    @setvar tmaptome
+endif
+## LJ maps
+if not varexist ljtome
+    overhead 'Please set your lumberjack map tome'
+    @setvar ljtome
+endif
+## Skinning maps
+if not varexist sktome
+    overhead 'Please set your Skinning map tome'
+    @setvar sktome
+endif
+## Ore maps
+if not varexist oretome
+    overhead 'Please set your Ore map tome'
+    @setvar oretome
+endif
+## Fishing maps
+if not varexist fishtome
+    overhead 'Please set your fishing tome'
+    @setvar fishtome
+endif
+## Recycler
+if not varexist recycler
+    overhead 'Plase target your recycler'
+    @setvar recycler
+endif
+## Stock pile
+if not varexist stockpile
+    @setvar stockpile
+endif
+
+overhead 'Adding magic items to recycler'
+@menu recycler 1
+clearsysmsg 
+pause 300
+clearsysmsg 
+overhead 'Checking for scrolls'
+@menu sstome 0
+clearsysmsg 
+pause 300   
+overhead 'Checking for aspect stuff'     
+@menu aspecttome 0
+clearsysmsg 
+pause 300    
+overhead 'Checking for cloth'
+@menu clothtome 0
+clearsysmsg 
+pause 300
+overhead 'Checking for dyes'
+@menu dyetome 0
+clearsysmsg 
+pause 300
+overhead 'Checking for tmaps'
+@menu  tmaptome 0
+clearsysmsg 
+pause 300
+overhead 'Checking for lumber maps'
+@menu ljtome 0
+clearsysmsg 
+pause 300
+overhead 'Checking for skinning maps'
+@menu sktome 0
+clearsysmsg 
+pause 300
+overhead 'Checking for ore maps'
+@menu oretome 0
+clearsysmsg 
+pause 300
+overhead 'Checking for fishing maps'
+@menu fishtome 0
+clearsysmsg 
+pause 300
+overhead 'Adding to stockpile'
+@menu stockpile 0
+wft
+target self
+clearsysmsg 
+pause 300
+
+
+
+
