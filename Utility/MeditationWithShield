@@ -1,0 +1,29 @@
+## Uneqiup shield before meditating.
+if skill 'parry' == 80
+    clearsysmsg 
+    if not lhandempty
+        clearhands 'left'
+    endif
+    skill 'meditation'
+    pause 500
+    if insysmsg 'You enter'
+    overhead '■■ meditation ■■'
+    elseif insysmsg 'concentration'
+        overhead '-- meditation fail--' 33
+        dclick shield
+    elseif insysmsg 'You must wait'
+        dclick shield
+        overhead 'COOLDOWN ON MED'
+        break
+    elseif insysmsg 'You are at peace'
+        dclick shield
+        overhead '■■ Full mana ■■'
+        break
+    endif
+    while findbuff 'Actively meditating' 
+        pause 500
+    endwhile
+    dclick shield
+else
+    skill 'meditation'
+endif
