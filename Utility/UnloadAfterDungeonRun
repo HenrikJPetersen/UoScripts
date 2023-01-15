@@ -1,10 +1,3 @@
-## This require tomes for the special items.
-## A magic recycler
-## A stockpile
-## A Bank vault
-
-
-
 ## skill scrolls
 if not varexist sstome
     overhead 'Please set your skill scroll tome'
@@ -107,7 +100,6 @@ wft
 target self
 clearsysmsg 
 pause 300
-
 
 
 
