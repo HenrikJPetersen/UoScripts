@@ -1,0 +1,212 @@
+@setvar! myKillTarget lasttarget 
+@setvar myPrevTarget myKillTarget
+clearsysmsg
+if not varexist firstPoison
+   @setvar firstPoison 1
+endif 
+if not timerexists preventspam
+    createtimer preventspam
+endif
+if not findtype '3850' backpack
+    overhead 'OUT OF LETHAL POISON' 2263 
+    break
+endif
+
+if myKillTarget = myPrevTarget and dead myKillTarget
+    //Target is dead - set a new one
+    if timer preventspam > 5000
+        overhead '■■ Target DEAD ■■' 33
+        overhead '■ Find a new one ■' 33
+        settimer preventspam 0
+    endif
+elseif find myKillTarget ground -1 -1 12
+    getlabel myKillTarget theLabel 
+    @setvar! myTargetLabel theLabel
+    if firstPoison = 1
+        if cooldown mindrot = 0
+            say '[Mindrot'
+        cooldown mindrot 30000
+        endif
+        cast 'poison'
+        pause 25
+        while not targetexists 
+        endwhile
+        while targetexists 
+            target myKillTarget
+        endwhile
+        pause 250
+        getlabel myKillTarget theLabel 
+        @setvar! myTargetLabel theLabel
+        while "Ticks" in theLabel and not dead myKillTarget
+            if "Greater" in theLabel
+                replay
+            endif
+            if "Deadly" in theLabel
+                replay
+            endif
+            if "Lethal" in theLabel
+                while cooldown poisonstrike = 0 and not dead myKillTarget and firstPoison = 1
+                    overhead 'We found lethal'
+                    overhead theLabel 2263 myKillTarget
+                    if cooldown corpseskin = 0
+                        say '[Corpseskin'
+                        cooldown corpseskin 29500
+                    endif
+                    //Failsafe, as if it resolves 2 ticks in a row, it will go to 6 ticks very fast
+                    if "7 Lethal" in theLabel or "6 Lethal" in theLabel
+                        say '[poisonstrike'
+                        cooldown poisonstrike 29500
+                        while not targetexists and not dead myKillTarget
+                        endwhile
+                        while targetexists and not dead myKillTarget
+                            target myKillTarget
+                            @setvar firstPoison 0
+                        endwhile
+                        replay
+                    endif
+                    
+                    if mana > 60 and cooldown corpseskin != 0
+                        cast 'flamestrike'
+                        while not targetexists 
+                        endwhile
+                    elseif mana > 30 and cooldown lightning = 0
+                        cast 'lightning'
+                        cooldown lightning 20000
+                        while not targetexists and not dead myKillTarget
+                        endwhile
+                    elseif mana > 20 and cooldown harm = 0
+                        cast 'harm'
+                        cooldown harm 20000
+                        while not targetexists and not dead myKillTarget
+                        endwhile
+                    endif
+                    
+                    while targetexists 
+                        target myKillTarget
+                    endwhile
+                    pause 250
+                    if "7 Lethal" in theLabel or "6 Lethal" in theLabel
+                        say '[poisonstrike'
+                        cooldown poisonstrike 29500
+                        while targetexists and not dead myKillTarget
+                            target myKillTarget
+                            @setvar firstPoison 0
+                        endwhile
+                        replay
+                    endif
+                    getlabel myKillTarget theLabel 
+                    @setvar! myTargetLabel theLabel
+                endwhile
+                replay
+            endif
+            if timer preventspam > 5000
+                overhead 'Attempting to get lethal'
+            endif
+            
+            
+            //updatting theLabel
+            getlabel myKillTarget theLabel 
+            @setvar! myTargetLabel theLabel
+        endwhile
+    
+    elseif firstPoison = 0
+        //Fix reapplying poison
+        //Cast order and meditation if low mana.
+            if cooldown curse < 2
+                cast 'curse'
+                while not targetexists and not dead myKillTarget
+                    pause 25
+                endwhile
+                while targetexists and not dead myKillTarget
+                    target myKillTarget
+                    cooldown curse 60000
+                endwhile
+            endif
+            if cooldown 'mana drain' < 2
+                cast 'Mana drain'
+                while not targetexists 
+                    pause 25
+                endwhile
+                while targetexists and not dead myKillTarget
+                    target myKillTarget
+                    cooldown 'mana drain' 60000
+                endwhile
+            endif
+            if cooldown poisonstrike < 5 or cooldown poisonstrike = 0
+                cast 'Poison'
+                while not targetexists 
+                    pause 50
+                endwhile
+                while targetexists and not dead myKillTarget
+                    target myKillTarget
+                endwhile
+                pause 250
+                getlabel myKillTarget theLabel 
+                @setvar! myTargetLabel theLabel
+                if "Greater" in theLabel
+                    replay
+                endif
+                if "Deadly" in theLabel
+                    replay
+                endif
+                if "Lethal" in theLabel
+                    say '[poisonstrike'
+                    cooldown poisonstrike 29500
+                    while not targetexists and not dead myKillTarget
+                        
+                    endwhile
+                    while targetexists and not dead myKillTarget
+                        target myKillTarget
+                        @setvar firstPoison 0
+                    endwhile
+                    replay
+                endif
+            endif
+            //Add meditation if cooldowns up and not enough mana for a flamestrike
+            //Add mushroom timer
+            //Add check for eldritch mana well
+            if cooldown corpseskin = 0
+                say '[Corpseskin'
+                cooldown corpseskin 29500
+            endif
+            if mana > 60 and cooldown corpseskin != 0
+                cast 'flamestrike'
+                while not targetexists and not dead myKillTarget
+                endwhile
+            elseif mana > 30 and cooldown lightning = 0
+                cast 'lightning'
+                cooldown lightning 40000
+                while not targetexists and not dead myKillTarget
+                endwhile
+            elseif mana > 20 and cooldown harm = 0
+                cast 'harm'
+                cooldown harm 20000
+                while not targetexists and not dead myKillTarget
+                endwhile
+            endif
+            while targetexists and not dead myKillTarget
+                target myKillTarget
+            endwhile
+            if mana < 10 and cooldown poisonstrike > 10
+                while mana < 90 and cooldown poisonstrike > 10
+                    skill 'meditation'
+                    if findbuff 'actively meditating'
+                        pause 2000
+                    endif
+                endwhile
+            endif
+    endif
+elseif find myKillTarget ground -1 -1 20
+   overhead '■■ OoR ■■' 2263 myKillTarget
+endif
+if dead myKillTarget    
+    @setvar myKillTarget 0
+    @setvar firstPoison 1         
+endif
+clearsysmsg 
+
+replay
+
+
+
+
