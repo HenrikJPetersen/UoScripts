@@ -9,8 +9,10 @@ Place below file in your character folder to insert the entries in for your cool
 https://github.com/HenrikJPetersen/UoScripts/blob/main/CooldownsForNecro/CoolDowns.razor
 
 2.
-Add ALL of the script files to your script folder found here: 
+Add ALL of the script files to your script folder, useally found in this folder: 
 "Uo\ClassicUO\Data\Plugins\Assistant\Scripts"
+Do not put the cooldowns.xml file in your script folder.
+
 3.
 Set up the hotkeys.
 You need to change your spells lasttarget and target self.
