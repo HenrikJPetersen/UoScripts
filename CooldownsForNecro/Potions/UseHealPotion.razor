@@ -1,0 +1,26 @@
+clearsysmsg 
+if findtype 'Yellow Potion' backpack as healpot
+    if not lhandempty
+        clearhands 'left'
+    endif
+    dclick healpot
+    cooldown "heal potion"
+    pause 250
+    if insysmsg 'You are already at full health'
+        cooldown "heal potion" 0
+        break
+    endif
+    if 'You must wait' in overhead 
+        overhead '■■ CD ON HEALPOT ■■' 2263
+            cooldown "heal potion" 0
+            break
+        endif
+    if skill 'parry' = 80 and lhandempty
+        if find shield backpack 
+            dclick shield
+        else
+            overhead 'You are missing a shield'
+        endif
+    endif
+    
+endif      

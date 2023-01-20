@@ -1,0 +1,18 @@
+## kill command for liches
+if findtype "a lich" gorund -1 -1 12 as lich
+    if noto lich = "friend"
+        @menu lich 1
+        while not targetexists 
+        endwhile
+        while targetexists 
+            if noto lasttarget = "hostile"
+                target lasttarget 
+            else
+                overhead 'wrong target dude'
+                break
+            endif
+        endwhile
+    endif
+else
+    overhead '■■ NO LICH ■■' 2263
+endif

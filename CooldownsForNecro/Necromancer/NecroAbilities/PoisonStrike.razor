@@ -2,6 +2,12 @@ if cooldown poisonstrike = 0
     @setvar! globalcooldown 1
     say '[poisonstrike'
 else
-    @setvar! globalcooldown 0
+    say '[poisonstrike'
+pause 150
+    if insysmsg 'You must wait'
+        @setvar! globalcooldown 0
+        stop
+    endif    
+    @setvar! globalcooldown 1
 endif
 clearsysmsg 

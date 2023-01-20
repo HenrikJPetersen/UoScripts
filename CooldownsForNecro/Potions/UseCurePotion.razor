@@ -1,0 +1,25 @@
+if not varexist mace
+    setvar mace
+endif
+if poisoned
+    overhead 'Attempting to eat cure potion'
+    while poisoned
+        if findtype '3847' backpack
+            if not lhandempty
+                clearhands 'left'
+            endif
+            potion 'cure'
+            pause 500
+        else
+            overhead '■■ No more cure potions ■■' 23
+            break
+        endif
+    endwhile
+else
+    overhead '■■ NOT poisoned ■■'55
+endif
+if skill 'parry' = 80
+    if lhandempty
+        dclick mace
+    endif
+endif

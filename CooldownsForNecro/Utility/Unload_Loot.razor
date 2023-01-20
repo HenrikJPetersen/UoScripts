@@ -1,0 +1,19 @@
+if not varexist stockpile
+    setvar stockpile
+endif
+if not varexist recycler
+    setvar recycler
+endif
+if not varexist shelf
+    setvar shelf
+endif
+hotkey 'Organizer Agent-02'
+pause 1000
+@menu stockpile 0
+wft
+target self
+pause 1000
+@menu recycler 1
+pause 1000
+@menu shelf 1
+overhead 'DOOOOOOOOOONE' 2263

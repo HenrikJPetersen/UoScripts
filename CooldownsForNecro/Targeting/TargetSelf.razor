@@ -1,0 +1,38 @@
+## See bottom of script for spell/ability ID
+## Last used ID: 2
+clearsysmsg 
+if not varexist enabledCooldowns
+    @setvar! enabledCooldowns 0
+endif
+@setvar! enabledCooldowns 1
+if not targetexists 
+    @setvar! globalcooldown 0
+endif
+if enabledCooldowns = 1
+    // DEBUG
+    //overhead globalcooldown 
+    //Last target
+    hotkey 'Target Self'
+    if not targetexists 
+        //poisonstrike
+        pause 25
+        if globalcooldown = 7
+            cooldown bless 120000
+            @setvar! globalcooldown 0
+        endif
+    endif
+elseif enabledCooldowns = 0
+    hotkey 'Target Self'
+    
+else
+    hotkey 'Target Self'    
+endif
+@setvar globalcooldown 0
+## cooldowns disabled: 0
+## poisonstrike: 1
+## painspike: 2
+## mana drain: 3
+## curse: 4 
+## Lightning: 5
+## Harm: 6    
+  

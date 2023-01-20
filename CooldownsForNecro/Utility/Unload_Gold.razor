@@ -1,0 +1,13 @@
+if not varexist bankbox
+    setvar bankbox
+endif
+if findtype '3821' backpack
+    lifttype '3821' 500000
+    pause 150
+    drop bankbox
+else
+    overhead '***************' 44
+    overhead 'Stop being poor' 33
+    overhead '***************' 44
+endif
+    

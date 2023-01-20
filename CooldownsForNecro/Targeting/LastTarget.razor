@@ -5,6 +5,9 @@ if not varexist enabledCooldowns
     @setvar! enabledCooldowns 0
 endif
 @setvar! enabledCooldowns 1
+if not targetexists 
+    @setvar! globalcooldown 0
+endif
 if enabledCooldowns = 1
     // DEBUG
     //overhead globalcooldown 

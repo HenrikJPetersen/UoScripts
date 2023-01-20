@@ -1,0 +1,15 @@
+if findtype 3948 ground any any 3 as gate
+    dclick gate
+    for 15
+        gumpresponse 2
+        pause 150
+    endfor
+    elseif findtype 30528 ground any any 3 as gate
+    dclick gate
+    for 15
+        gumpresponse 2
+    pause 150
+    endfor
+else
+    overhead '---NO GATE WITHIN 2 TILES--' 33
+endif

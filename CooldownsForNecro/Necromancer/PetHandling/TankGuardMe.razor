@@ -1,0 +1,37 @@
+if followers < 2 
+    overhead 'No pets'
+endif
+if followers <= 3 and findtype "an earth elemental" ground -1 -1 20 as EE
+    if noto EE = "friend"
+        pause 25
+        @menu EE 3
+        pause 25
+        overhead '■■ GUARDING ■■' 2170 EE
+    endif
+endif
+if followers = 3 and findtype "a ghoul" -1 -1 8 as ghoul and findtype "a lich" gorund -1 -1 8 as lich
+    overhead 'NO TANK'
+endif
+if followers >= 4  and findtype "an earth elemental" ground -1 -1 20 as EE
+    if findtype "a lich" gorund -1 -1 8 as lich
+        pause 100
+        @menu EE 3
+        overhead '■■ GUARDING ■■' 2170 EE
+        pause 100    
+        if noto lich = "friend"
+            pause 100
+            @menu lich 4
+            pause 100
+            overhead '■■ Following ■■' 2170 lich
+        endif
+        if followers = 5 and findtype "a ghoul" -1 -1 8 as ghoul
+            pause 100
+            @menu ghoul 4
+            pause 100
+            overhead '■■ Following ■■' 2170 ghoul
+        endif
+    else 
+        say 'All guard me'
+        overhead 'Everyone is watching' 2170 EE
+    endif
+endif

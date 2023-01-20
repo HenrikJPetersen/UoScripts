@@ -1,0 +1,25 @@
+if not varexist 'strpotion_cd'
+    @setvar! 'strpotion_cd' 120000
+endif
+if maxhp < 112
+    if findtype "white potion" backpack as spotion
+        if skill 'parry' = 80
+            if not lhandempty 
+                clearhands 'left'
+            endif
+        endif
+        overhead '■■ EAT: STR potion ■■' 335
+        dclick spotion
+        pause 400
+        cooldown "strength potion" strpotion_cd
+        if skill 'parry' = 80
+            if lhandempty
+                dclick shield
+            endif
+        endif
+    else
+        overhead 'No strenght potion left' 33
+    endif
+else
+        overhead '■■ Str pot active ■■'
+endif

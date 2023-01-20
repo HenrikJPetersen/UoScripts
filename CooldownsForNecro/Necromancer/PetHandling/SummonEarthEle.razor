@@ -1,18 +1,36 @@
-## Hue color for overhead:  2263
-## Hue color for pet overhead: 2170
-    
-## Maxing summon creature exp? set this to 1 and i will inform you when you need a new one
-@setvar! summonghoul 0
+if not varexist followCount
+    @setvar! followCount 0
+endif
+
 @setvar! withercooldown 30700
+@setvar! summonghoul 0
 
-clearsysmsg 
+if followers = 0
+    overhead 'followcount = 0'
+    @setvar! followCount 0
+elseif followers = 1
+    overhead 'followcount = 1'
+    @setvar! followCount 1
+elseif followers = 2
+    overhead 'followcount = 2'
+    @setvar! followCount 2
+elseif followers = 3
+    overhead 'followcount = 3'
+    @setvar! followCount 3
+elseif followers = 4
+    overhead 'followcount = 4'
+    @setvar! followCount 4
+elseif followers = 5
+    overhead 'followcount = 5'
+    @setvar! followCount 5
+endif
 
-if followers < 2
-    if cooldown wither = 0
-        say '[Wither'
+if followCount = 0
+    overhead 'no pets'
+    if cooldown wither
+    else
+        say '[wither'
         cooldown wither withercooldown
-    else 
-        overhead 'WITHER ON CD'
     endif
     cast 'earth elemental'
     pause 50
@@ -29,117 +47,116 @@ if followers < 2
         pause 250
         stop
     endif
-elseif followers = 2 and findtype "an earth elemental" ground -1 -1 12 
-    if cooldown wither = 0
-        say '[Wither'
-        cooldown wither withercooldown
-    else 
-        overhead 'WITHER ON CD'
-    endif
-    cast 'earth elemental'
-    pause 50
-    while not findtype "an earth elemental" ground -1 -1 0
-        if insysmsg 'disturbed'
-            stop
+endif    
+if followCount = 2 
+    if findtype "an earth elemental" -1 -1 12 as EE
+        if cooldown wither
+            overhead 'WITHER ON CD'
+        else
+            say '[Wither'   
+            cooldown wither withercooldown
         endif
+        cast 'earth elemental'
+        pause 50
+        while not findtype "an earth elemental" ground -1 -1 0
+            if insysmsg 'disturbed'
+                stop
+            endif
+            pause 250
+        endwhile
         pause 250
-    endwhile
-    pause 250
-    if findtype "an earth elemental" ground -1 -1 0 as guardpet
-        @menu guardpet 3
-        overhead 'GUARDING' 2170 guardpet
-        pause 250
-        break
-    endif
-elseif followers < 4 and followers > 2 and findtype "an earth elemental" ground -1 -1 12 as EE
-    if cooldown wither = 0
-        say '[Wither'
-        cooldown wither withercooldown
-    else 
-        overhead 'WITHER ON CD'
-    endif
-    cast 'earth elemental'
-    pause 50
-    while not findtype "an earth elemental" ground -1 -1 0
-        if insysmsg 'disturbed'
-            stop
+        if findtype "an earth elemental" ground -1 -1 0 as guardpet
+            @menu guardpet 3
+            overhead 'GUARDING' 2170 guardpet
+            pause 250
         endif
-        pause 250
-    endwhile
-    pause 250
-    if findtype "an earth elemental" ground -1 -1 0 as guardpet
-        @menu guardpet 3
-        overhead 'GUARDING' 2170 guardpet
-        pause 250
-        break
-    endif
-elseif followers = 4 and findtype "an earth elemental" ground -1 -1 12 as EE
-    if summonghoul = 1
-        overhead '■■ RIP GHOUL ■■' 2263
-    endif
-    cast 'Dispel'
-    while not targetexists 
-        if insysmsg 'Disturbed'
-            stop
-        endif
-        pause 25
-    endwhile
-    while targetexists and not dead EE
-        target EE
-    endif
-    pause 250
-    if cooldown wither = 0
-        say '[Wither'
-        cooldown wither withercooldown
-    else 
-        overhead 'WITHER ON CD'
-    endif
-    cast 'earth elemental'
-    while not findtype "an earth elemental" ground -1 -1 0
-        if insysmsg 'disturbed'
-            stop
-        endif
-        pause 250
-    endwhile
-    if findtype "an earth elemental" ground -1 -1 0 as guardpet
-        @menu pet 3
-        overhead '■■ Guard active ■■' 2170 guardpet
-        pause 250
-        break
-    endif
-elseif followers = 5 and findtype "an earth elemental" ground -1 -1 12 as EE
-    cast 'Dispel'
-    while not targetexists 
-        if insysmsg 'Disturbed'
-            stop
-        endif
-        pause 25
-    endwhile
-    while targetexists and not dead EE
-        target EE
-    endif
-    pause 250
-    if cooldown wither = 0
-        say '[Wither'
-        cooldown wither withercooldown
-    else 
-        overhead 'WITHER ON CD'
-    endif
-    cast 'earth elemental'
-    while not findtype "an earth elemental" ground -1 -1 0
-        if insysmsg 'disturbed'
-            stop
-        endif
-        pause 250
-    endwhile
-    if findtype "an earth elemental" ground -1 -1 0 as guardpet
-        @menu pet 3
-        overhead '■■ Guard active ■■' 2170 guardpet
-        pause 250
-        break
     endif
 endif
-        
-        
-       
+if followCount = 3 
+    overhead 'followCount = 3'
+    if findtype "an earth elemental" -1 -1 12 as EE
+        if cooldown wither = 0
+            say '[Wither'
+            cooldown wither withercooldown
+        else 
+            overhead 'WITHER ON CD'
+        endif
+        cast 'earth elemental'
+        pause 50
+        while not findtype "an earth elemental" ground -1 -1 0
+            if insysmsg 'disturbed'
+                stop
+            endif
+            pause 250
+            pause 250
+        endwhile
+        pause 250
+        if findtype "an earth elemental" ground -1 -1 0 as guardpet
+            @menu guardpet 3
+            overhead 'GUARDING' 2170 guardpet
+            pause 250
+        endif
+    endif
+endif
+if followCount = 4 or followCount = 5
+    if followCount = 4 and summonghoul = 1
+        overhead 'Missing a ghoul'
+    endif
+    overhead '4 followers'
+    if findtype "a lich" ground -1 -1 12 as lich
+        if noto lich = "friend"
+            @menu lich 3
+            overhead 'guard active' 22 lich
+        endif
+    endif
+    if findtype "an earth elemental" ground -1 -1 12 as EE
+        if noto EE = "friend"
+            if cooldown wither
+                if mana < 45
+                    overhead '■■ NO MANA ■■' 2622
+                    stop
+                endif
+            endif
+            overhead '■ Target ■' 2263 EE
+            cast 'dispel'
+            while not targetexists 
+            endwhile
+            while targetexists 
+                target EE
+            endif
+        else
+            overhead 'Did not find a EE of yours - ERROR'
+            stop
+        endif
+        if cooldown wither
+            if mana < 45
+                overhead 'Stopping - no mana'
+                stop
+            endif
+        else
+            say '[wither'
+            cooldown wither withercooldown
+        endif
+        pause 250
+        cast 'earth elemental'
+        while not findtype "an earth elemental" ground -1 -1 0
+            if insysmsg 'disturbed'
+                stop
+            endif
+            pause 250
+        endwhile
+        if findtype "an earth elemental" ground -1 -1 0 as guardpet
+            @menu pet 3
+            overhead '■■ Guard active ■■' 2170 guardpet
+            pause 250
+        endif
+    endif
     
+    if findtype "a lich" ground -1 -1 12 as lich
+        if noto lich = "friend"
+            @menu lich 4
+            overhead 'follow active' 22 lich
+        endif
+    endif
+    
+endif

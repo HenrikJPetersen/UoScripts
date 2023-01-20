@@ -1,177 +1,35 @@
-## This script assumes that you have a cancel current script hotkey.  
-## Altenatively you can use a hotkey for another script as it will stop current run.
-## If youre trying to resummon, it will attempt again if disturbed.. This could
-## be an infinite loop - if not handled by stopping the script.
-## Hue color for overhead:  2263
-## Hue color for pet overhead: 2170
-    
-## Maxing summon creature exp? set this to 1 and i will inform you when you need a new one
-@setvar! summonghoul 0
-@setvar! withercooldown 30700
-cooldown 'Mana drain' 0
-cooldown poisonstrike 0
-cooldown 'Pain spike' 0
-clearsysmsg 
-
-if followers < 2
-    overhead 'Followwers < 2'
-    if cooldown wither = 0
-        say '[Wither'
-        cooldown wither withercooldown
-    else 
-        overhead 'WITHER ON CD'
-    endif
-    cast 'earth elemental'
-    pause 50
-    while not findtype "an earth elemental" ground -1 -1 0
-        if insysmsg 'disturbed'
-            overhead 'DISTURBED' 33
-            clearsysmsg
-            pause 500
-            replay
-        endif
-        pause 250
-    endwhile
-    pause 250
-    if findtype "an earth elemental" ground -1 -1 0 as guardpet
-        @menu guardpet 3
-        overhead 'GUARDING' 2170 guardpet
-        pause 250
-        break
-    endif
-elseif followers = 2 and findtype "an earth elemental" ground -1 -1 12 
-    overhead 'followers = 2 and atleast 1 follower being an EE elemental'
-    if cooldown wither = 0
-        say '[Wither'
-        cooldown wither withercooldown
-    else 
-        overhead 'WITHER ON CD'
-    endif
-    cast 'earth elemental'
-    pause 50
-    while not findtype "an earth elemental" ground -1 -1 0
-        if insysmsg 'disturbed'
-            overhead 'DISTURBED' 33
-            clearsysmsg
-            pause 500
-            replay
-        endif
-        pause 250
-    endwhile
-    pause 250
-    if findtype "an earth elemental" ground -1 -1 0 as guardpet
-        @menu guardpet 3
-        overhead 'GUARDING' 2170 guardpet
-        pause 250
-        break
-    endif
-elseif followers < 4 and followers > 2 and findtype "an earth elemental" ground -1 -1 12 as EE
-    overhead 'followers = 3 and atleast 1 follower being an EE elemental' 2263
-    if cooldown wither = 0
-        say '[Wither'
-        cooldown wither withercooldown
-    else 
-        overhead 'WITHER ON CD'
-    endif
-    cast 'earth elemental'
-    pause 50
-    while not findtype "an earth elemental" ground -1 -1 0
-        if insysmsg 'disturbed'
-            overhead 'DISTURBED' 33
-            clearsysmsg
-            pause 500
-            replay
-        endif
-        pause 250
-    endwhile
-    pause 250
-    if findtype "an earth elemental" ground -1 -1 0 as guardpet
-        @menu guardpet 3
-        overhead 'GUARDING' 2170 guardpet
-        pause 250
-        break
-    endif
-elseif followers = 4 and findtype "an earth elemental" ground -1 -1 12 as EE
-    overhead '4 followers atleast 1 being EE elemental' 2263 
-    //Inform about missing ghoul if summonghoul is 1
-    //Dispel EE and re-summon
-    if summonghoul = 1
-        overhead '■■ RIP GHOUL ■■' 2263
-    endif
-    cast 'Dispel'
-    while not targetexists 
-        if insysmsg 'Disturbed'
-            clearsysmsg
-            pause 500
-            replay
-        endif
-        pause 25
-    endwhile
-    while targetexists and not dead EE
-        target EE
-    endif
-    pause 250
-    if cooldown wither = 0
-        say '[Wither'
-        cooldown wither withercooldown
-    else 
-        overhead 'WITHER ON CD'
-    endif
-    cast 'earth elemental'
-    while not findtype "an earth elemental" ground -1 -1 0
-        if insysmsg 'disturbed'
-            overhead 'DISTURBED' 33
-            clearsysmsg
-            pause 500
-            replay
-        endif
-        pause 250
-    endwhile
-    if findtype "an earth elemental" ground -1 -1 0 as guardpet
-        @menu pet 3
-        overhead '■■ Guard active ■■' 2170 guardpet
-        pause 250
-        break
-    endif
-elseif followers = 5 and findtype "an earth elemental" ground -1 -1 12 as EE
-    overhead '5 followers atleast 1 being EE elemental' 2263 
-    cast 'Dispel'
-    while not targetexists 
-        if insysmsg 'Disturbed'
-            clearsysmsg
-            pause 500
-            replay
-        endif
-        pause 25
-    endwhile
-    while targetexists and not dead EE
-        target EE
-    endif
-    pause 250
-    if cooldown wither = 0
-        say '[Wither'
-        cooldown wither withercooldown
-    else 
-        overhead 'WITHER ON CD'
-    endif
-    cast 'earth elemental'
-    while not findtype "an earth elemental" ground -1 -1 0
-        if insysmsg 'disturbed'
-            overhead 'DISTURBED' 33
-            clearsysmsg
-            pause 500
-            replay
-        endif
-        pause 250
-    endwhile
-    if findtype "an earth elemental" ground -1 -1 0 as guardpet
-        @menu pet 3
-        overhead '■■ Guard active ■■' 2170 guardpet
-        pause 250
-        break
-    endif
+if not varexist followCount
+    @setvar! followCount 0
 endif
-        
-        
-       
-    
+if followers = 0
+    overhead 'followcount = 0'
+    @setvar! followCount 0
+elseif followers = 1
+    overhead 'followcount = 1'
+    @setvar! followCount 1
+elseif followers = 2
+    overhead 'followcount = 2'
+    @setvar! followCount 2
+elseif followers = 3
+    overhead 'followcount = 3'
+    @setvar! followCount 3
+elseif followers = 4
+    overhead 'followcount = 4'
+    @setvar! followCount 4
+elseif followers = 5
+    overhead 'followcount = 5'
+    @setvar! followCount 5
+endif
+if followCount = 0
+    overhead 'no pets'
+elseif followCount = 1
+    overhead '1 follow slot taken'
+elseif followCount = 2 and findtype "an earth elemental" -1 -1 12 as EE
+    overhead '2 follow slot taken' 33 EE
+elseif followCount = 3 and findtype "an earth elemental" -1 -1 12 as EE
+    overhead '3 follow slot taken' 33 EE
+elseif followCount = 4 and findtype "an earth elemental" -1 -1 12 as EE
+    overhead '4 follow slot taken' 33 EE
+elseif followCount = 5 and findtype "an earth elemental" -1 -1 12 as EE
+    overhead '5 follow slot taken' 33 EE
+endif

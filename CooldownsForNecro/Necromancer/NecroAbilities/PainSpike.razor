@@ -2,6 +2,12 @@ if cooldown 'Pain spike' = 0
     @setvar! globalcooldown 2
     say '[painspike'
 else
-    @setvar! globalcooldown 0
-endif   
-clearsysmsg     
+    say '[painspike'
+    pause 150
+    if insysmsg 'You must wait'
+        @setvar! globalcooldown 0
+        stop
+    endif    
+    @setvar! globalcooldown 2
+endif
+clearsysmsg 
