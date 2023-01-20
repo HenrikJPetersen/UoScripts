@@ -15,7 +15,7 @@ Add ALL of the script files to your script folder, useally found in this folder:
 Set up the hotkeys. You need to change your spells lasttarget and target self.
 
 KNOWN ISSUE: 
-IF you spam your last target/target self - it will not active the cooldowns. You can only press it once.
+IF you spam your last target/target self - it will not trigger the cooldowns. You can only press it once.
 
 TODO: 
 Try to mitigate the spam issue by using global variables that are reset when pressing lasttarget/targetself more than once. Find any kind of indicator that the spell/skill has been triggered. Current mana vs mana before cast etc.
