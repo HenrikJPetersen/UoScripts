@@ -1,7 +1,7 @@
-Alot of the handling for cooldowns was inspired by this following link:
+A lot of the handling for cooldowns was inspired by this:
 https://gist.github.com/tstenhaug/7b8a8205da3d11d3a41ecabc354db746#file-wizardry-nuke-with-cooldowns-razor-L232
 
-
+I just wanted to get away from the 1 btn press for farm/grind - in the boss scenarios - that is fine.
 
 SETUP
 1.
