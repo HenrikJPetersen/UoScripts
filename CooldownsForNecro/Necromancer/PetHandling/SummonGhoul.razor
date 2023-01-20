@@ -1,0 +1,37 @@
+if mana < 50
+    if findtype '29012' backpack
+        dclicktype '29012'
+    else
+        overhead 'No SHROMS left' 33
+    endif
+endif    
+if findtype 'a ghoul' ground 0 0 2 as pet
+    break
+endif
+if findtype 'a skeleton' ground 0 0 2 as pet
+    if noto 'pet' = "friend"
+    @menu 'pet' 9
+    endif    
+elseif findtype 'a skeleton knight' ground 0 0 2 as pet
+    if noto 'pet' = "friend"
+    @menu 'pet' 9
+    endif    
+elseif findtype 'a zombie' ground 0 0 2 as pet
+    if noto 'pet' = "friend"
+    @menu 'pet' 9
+    endif    
+elseif findtype 'a skeleton knight' ground 0 0 2 as pet
+    if noto 'pet' = "friend"
+    @menu 'pet' 9
+    endif    
+elseif findtype 'a rotting flesh' ground 0 0 2 as pet
+    if noto 'pet' = "friend"
+    @menu 'pet' 9
+    endif
+endif
+say '[wither'
+pause 500
+say '[vengefulspirit'
+cast 'Summ. Creature'
+pause 2800
+replay

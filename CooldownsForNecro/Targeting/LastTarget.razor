@@ -1,0 +1,68 @@
+## See bottom of script for spell/ability ID
+## Last used ID: 2
+clearsysmsg 
+if not varexist enabledCooldowns
+    @setvar! enabledCooldowns 0
+endif
+@setvar! enabledCooldowns 1
+if enabledCooldowns = 1
+    // DEBUG
+    //overhead globalcooldown 
+    //Last target
+    hotkey 'Last target'
+    if not targetexists 
+        //poisonstrike
+        pause 25
+        if globalcooldown = 1
+            pause 150
+            if insysmsg 'You do not have a Spell-based poison or disease effect on that target'
+                @setvar! globalcooldown 0
+                break
+            else
+                cooldown poisonstrike 31500
+            endif
+        endif
+        //painspike
+        if globalcooldown = 2
+            pause 150
+            if insysmsg 'You do not see any corpses near that location'
+                @setvar! globalcooldown 0
+                break
+            else
+                cooldown 'Pain spike' 31500
+                @setvar! globalcooldown 0
+            endif
+        endif
+        if globalcooldown = 3
+            cooldown 'Mana drain' 59500
+            @setvar! globalcooldown 0
+        endif
+        if globalcooldown = 4
+            cooldown 'curse' 59500
+            @setvar! globalcooldown 0
+        endif
+        if globalcooldown = 5
+            cooldown lightning 39500
+            @setvar! globalcooldown 0
+        endif
+        if globalcooldown = 6
+            cooldown harm 19500
+            @setvar! globalcooldown 0
+        endif
+        
+    endif
+elseif enabledCooldowns = 0
+    hotkey 'Last target'
+    
+else
+    hotkey 'Last target'    
+endif
+@setvar globalcooldown 0
+## cooldowns disabled: 0
+## poisonstrike: 1
+## painspike: 2
+## mana drain: 3
+## curse: 4 
+## Lightning: 5
+## Harm: 6    
+  

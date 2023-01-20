@@ -1,0 +1,10 @@
+## Change cooldown according to your
+## wiz grim..
+if cooldown lightning = 0
+    cast 'harm'
+    @setvar! globalcooldown 6
+else
+    overhead '■ CD: Harm ■' 33
+    cast 'harm'
+    @setvar! globalcooldown 0
+endif

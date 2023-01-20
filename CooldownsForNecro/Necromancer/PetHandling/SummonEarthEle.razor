@@ -1,0 +1,145 @@
+## Hue color for overhead:  2263
+## Hue color for pet overhead: 2170
+    
+## Maxing summon creature exp? set this to 1 and i will inform you when you need a new one
+@setvar! summonghoul 0
+@setvar! withercooldown 30700
+
+clearsysmsg 
+
+if followers < 2
+    if cooldown wither = 0
+        say '[Wither'
+        cooldown wither withercooldown
+    else 
+        overhead 'WITHER ON CD'
+    endif
+    cast 'earth elemental'
+    pause 50
+    while not findtype "an earth elemental" ground -1 -1 0
+        if insysmsg 'disturbed'
+            stop
+        endif
+        pause 250
+    endwhile
+    pause 250
+    if findtype "an earth elemental" ground -1 -1 0 as guardpet
+        @menu guardpet 3
+        overhead 'GUARDING' 2170 guardpet
+        pause 250
+        stop
+    endif
+elseif followers = 2 and findtype "an earth elemental" ground -1 -1 12 
+    if cooldown wither = 0
+        say '[Wither'
+        cooldown wither withercooldown
+    else 
+        overhead 'WITHER ON CD'
+    endif
+    cast 'earth elemental'
+    pause 50
+    while not findtype "an earth elemental" ground -1 -1 0
+        if insysmsg 'disturbed'
+            stop
+        endif
+        pause 250
+    endwhile
+    pause 250
+    if findtype "an earth elemental" ground -1 -1 0 as guardpet
+        @menu guardpet 3
+        overhead 'GUARDING' 2170 guardpet
+        pause 250
+        break
+    endif
+elseif followers < 4 and followers > 2 and findtype "an earth elemental" ground -1 -1 12 as EE
+    if cooldown wither = 0
+        say '[Wither'
+        cooldown wither withercooldown
+    else 
+        overhead 'WITHER ON CD'
+    endif
+    cast 'earth elemental'
+    pause 50
+    while not findtype "an earth elemental" ground -1 -1 0
+        if insysmsg 'disturbed'
+            stop
+        endif
+        pause 250
+    endwhile
+    pause 250
+    if findtype "an earth elemental" ground -1 -1 0 as guardpet
+        @menu guardpet 3
+        overhead 'GUARDING' 2170 guardpet
+        pause 250
+        break
+    endif
+elseif followers = 4 and findtype "an earth elemental" ground -1 -1 12 as EE
+    if summonghoul = 1
+        overhead '■■ RIP GHOUL ■■' 2263
+    endif
+    cast 'Dispel'
+    while not targetexists 
+        if insysmsg 'Disturbed'
+            stop
+        endif
+        pause 25
+    endwhile
+    while targetexists and not dead EE
+        target EE
+    endif
+    pause 250
+    if cooldown wither = 0
+        say '[Wither'
+        cooldown wither withercooldown
+    else 
+        overhead 'WITHER ON CD'
+    endif
+    cast 'earth elemental'
+    while not findtype "an earth elemental" ground -1 -1 0
+        if insysmsg 'disturbed'
+            stop
+        endif
+        pause 250
+    endwhile
+    if findtype "an earth elemental" ground -1 -1 0 as guardpet
+        @menu pet 3
+        overhead '■■ Guard active ■■' 2170 guardpet
+        pause 250
+        break
+    endif
+elseif followers = 5 and findtype "an earth elemental" ground -1 -1 12 as EE
+    cast 'Dispel'
+    while not targetexists 
+        if insysmsg 'Disturbed'
+            stop
+        endif
+        pause 25
+    endwhile
+    while targetexists and not dead EE
+        target EE
+    endif
+    pause 250
+    if cooldown wither = 0
+        say '[Wither'
+        cooldown wither withercooldown
+    else 
+        overhead 'WITHER ON CD'
+    endif
+    cast 'earth elemental'
+    while not findtype "an earth elemental" ground -1 -1 0
+        if insysmsg 'disturbed'
+            stop
+        endif
+        pause 250
+    endwhile
+    if findtype "an earth elemental" ground -1 -1 0 as guardpet
+        @menu pet 3
+        overhead '■■ Guard active ■■' 2170 guardpet
+        pause 250
+        break
+    endif
+endif
+        
+        
+       
+    

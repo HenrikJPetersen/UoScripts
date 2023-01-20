@@ -1,0 +1,8 @@
+if findtype '29012' backpack as shroom
+    if cooldown mushroom = 0 and mana < maxmana
+        dclick shroom
+        cooldown mushroom 60000
+    endif
+elseif not findtype '29012' backpack
+    overhead 'NO SHROOMS' 2263
+endif
