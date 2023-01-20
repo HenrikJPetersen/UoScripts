@@ -4,6 +4,9 @@ https://gist.github.com/tstenhaug/7b8a8205da3d11d3a41ecabc354db746#file-wizardry
 I just wanted to get away from the 1 btn press for farm/grind - in the boss scenarios - that is fine.
 
 SETUP
+All the needed files is found in this folder:
+https://github.com/HenrikJPetersen/UoScripts/tree/main/CooldownsForNecro
+
 1.
 Place below file in your character folder to insert the entries in for your cooldowns.xml
 https://github.com/HenrikJPetersen/UoScripts/blob/main/CooldownsForNecro/CoolDowns.razor
