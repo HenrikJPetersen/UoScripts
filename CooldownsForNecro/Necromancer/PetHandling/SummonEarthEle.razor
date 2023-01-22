@@ -1,30 +1,47 @@
 if not varexist followCount
     @setvar! followCount 0
 endif
+if followers = 0
+    @setvar! followCount 0
+elseif followers = 1
+    @setvar! followCount 1
+elseif followers = 2
+    @setvar! followCount 2
+elseif followers = 3
+    @setvar! followCount 3
+elseif followers = 4
+    @setvar! followCount 4
+elseif followers = 5
+    @setvar! followCount 5
+endif
 
 @setvar! withercooldown 30700
 @setvar! summonghoul 0
 
-if followers = 0
-    overhead 'followcount = 0'
-    @setvar! followCount 0
-elseif followers = 1
-    overhead 'followcount = 1'
-    @setvar! followCount 1
-elseif followers = 2
-    overhead 'followcount = 2'
-    @setvar! followCount 2
-elseif followers = 3
-    overhead 'followcount = 3'
-    @setvar! followCount 3
-elseif followers = 4
-    overhead 'followcount = 4'
-    @setvar! followCount 4
-elseif followers = 5
-    overhead 'followcount = 5'
-    @setvar! followCount 5
+#### To enable autodispel - set var to 1
+#### To disable set it to 0
+if not varexist autoDispel
+    @setvar! autoDispel 1
+endif
+if not varexist petToDispel
+    @setvar! petToDispel 3
 endif
 
+
+if autoDispel = 1
+    @setvar! petToDispel 1
+elseif autoDispel = 0
+    @setvar! petToDispel 0 
+endif
+
+
+########### Brings up a target cursor to indicate what pet youre dispelling #############
+if followCount >= 4
+if petToDispel = 1
+    @setvar petToDispel
+endif
+endif
+############
 if followCount = 0
     overhead 'no pets'
     if cooldown wither
@@ -47,8 +64,7 @@ if followCount = 0
         pause 250
         stop
     endif
-endif    
-if followCount = 2 
+elseif followCount = 2 
     if findtype "an earth elemental" -1 -1 12 as EE
         if cooldown wither
             overhead 'WITHER ON CD'
@@ -71,9 +87,8 @@ if followCount = 2
             pause 250
         endif
     endif
-endif
-if followCount = 3 
-    overhead 'followCount = 3'
+    
+elseif followCount = 3
     if findtype "an earth elemental" -1 -1 12 as EE
         if cooldown wither = 0
             say '[Wither'
@@ -97,66 +112,49 @@ if followCount = 3
             pause 250
         endif
     endif
-endif
-if followCount = 4 or followCount = 5
-    if followCount = 4 and summonghoul = 1
-        overhead 'Missing a ghoul'
-    endif
-    overhead '4 followers'
+elseif followCount = 4 or followCount = 5
     if findtype "a lich" ground -1 -1 12 as lich
         if noto lich = "friend"
             @menu lich 3
             overhead 'guard active' 22 lich
         endif
     endif
-    if findtype "an earth elemental" ground -1 -1 12 as EE
-        if noto EE = "friend"
-            if cooldown wither
-                if mana < 45
-                    overhead '■■ NO MANA ■■' 2622
-                    stop
-                endif
-            endif
-            overhead '■ Target ■' 2263 EE
-            cast 'dispel'
-            while not targetexists 
-            endwhile
-            while targetexists 
-                target EE
-            endif
-        else
-            overhead 'Did not find a EE of yours - ERROR'
+    if dead petToDispel
+        overhead 'Could not find pet to dispel'
+    else
+        cast 'dispel'
+        while not targetexists 
+        endwhile
+        while targetexists 
+            target petToDispel
+        endwhile
+    endif
+    if cooldown wither
+        if mana < 45
+            overhead 'Stopping - no mana'
             stop
         endif
-        if cooldown wither
-            if mana < 45
-                overhead 'Stopping - no mana'
-                stop
-            endif
-        else
-            say '[wither'
-            cooldown wither withercooldown
+    else
+        say '[wither'
+        cooldown wither withercooldown
+    endif
+    pause 250
+    cast 'earth elemental'
+    while not findtype "an earth elemental" ground -1 -1 0
+        if insysmsg 'disturbed'
+            stop
         endif
         pause 250
-        cast 'earth elemental'
-        while not findtype "an earth elemental" ground -1 -1 0
-            if insysmsg 'disturbed'
-                stop
-            endif
-            pause 250
-        endwhile
-        if findtype "an earth elemental" ground -1 -1 0 as guardpet
-            @menu pet 3
-            overhead '■■ Guard active ■■' 2170 guardpet
-            pause 250
-        endif
+    endwhile
+    if findtype "an earth elemental" ground -1 -1 0 as guardpet
+        @menu pet 3
+        overhead '■■ Guard active ■■' 2170 guardpet
+        pause 250
     endif
-    
     if findtype "a lich" ground -1 -1 12 as lich
         if noto lich = "friend"
             @menu lich 4
             overhead 'follow active' 22 lich
         endif
     endif
-    
 endif
