@@ -1,0 +1,49 @@
+if skill 'Mace Fighting' > 0
+    if not varexist weapon
+        setvar weapon
+    endif
+elseif skill 'Swordsmanship' > 0
+    if not varexist weapon
+        setvar weapon
+    endif
+endif
+
+
+if "swordsmanship" > 0
+	dclick weapon
+endif
+
+if cooldown 'Pain spike' = 0
+    @setvar! globalcooldown 2
+    say '[painspike'
+else
+    say '[painspike'
+    pause 150
+    if insysmsg 'You must wait'
+        @setvar! globalcooldown 0
+        stop
+    endif    
+    @setvar! globalcooldown 2
+endif
+
+
+
+
+if findlayer 'self' 'righthand' as 'LH'
+    getlabel 'LH' 'label'
+    if 'eminently' in 'label'
+        overhead '■■ ON: weapon ■■' 88
+        dclick weapon
+        break       
+    endif
+endif
+if findlayer 'self' 'righthand' as 'LH'
+    getlabel 'LH' 'label'
+    if 'training' in 'label' or 'club' in 'label'
+        overhead '■■ ON: Spellbook ■■' 88
+        dclick spellbook
+    endif
+endif  
+
+
+
